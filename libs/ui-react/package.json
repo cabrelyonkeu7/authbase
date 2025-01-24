@@ -1,0 +1,25 @@
+{
+  "name": "@authbase/ui-react",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "nx": {
+    "name": "ui-react",
+    "projectType": "library",
+    "sourceRoot": "libs/ui-react/src"
+  },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo"
+  ]
+}
