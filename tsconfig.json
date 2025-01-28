@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./libs/ui-react"
+    },
+    {
+      "path": "./libs/core"
     }
   ],
   "ts-node": {
