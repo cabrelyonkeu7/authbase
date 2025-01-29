@@ -27,6 +27,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Clean Yarn cache
+        run: yarn cache clean
+
+      - name: Increase memory limit
+        run: export NODE_OPTIONS=--max_old_space_size=4096
+
       - name: Install dependencies
         run: yarn install
 
