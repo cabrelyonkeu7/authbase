@@ -28,7 +28,9 @@ jobs:
         run: export NODE_OPTIONS=--max_old_space_size=4096
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          rm -rf node_modules package-lock.json yarn.lock
+          yarn install
 
       - name: Upload node_modules
         uses: actions/upload-artifact@v4
@@ -65,7 +67,9 @@ jobs:
         run: yarn cache clean
   
       - name: Install dependencies
-        run: yarn install
+        run: |
+          rm -rf node_modules package-lock.json yarn.lock 
+          yarn install
 
       - name: Lint ${{ matrix.project }}
         run: npx nx run ${{ matrix.project }}:lint
@@ -111,7 +115,9 @@ jobs:
         run: yarn cache clean
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          rm -rf node_modules package-lock.json yarn.lock
+          yarn install
 
       - name: Merge coverage reports
         run: node coverageMerger.js
