@@ -20,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Increase memory limit
         run: export NODE_OPTIONS=--max_old_space_size=4096
@@ -48,17 +47,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
       - name: Download node_modules
         uses: actions/download-artifact@v4
         with:
           name: node-modules
           path: node_modules/
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
   
       - name: Install dependencies
         run: npm install --legacy-peer-deps
