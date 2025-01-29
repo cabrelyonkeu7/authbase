@@ -46,7 +46,7 @@ jobs:
         run: yarn nx run ${{ matrix.project }}:build
 
       - name: Upload coverage reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-reports
           path: coverage/
