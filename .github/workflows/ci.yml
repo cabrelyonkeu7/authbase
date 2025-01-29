@@ -34,9 +34,45 @@ jobs:
         run: yarn nx run ${{ matrix.project }}:lint
       
       - name: Test ${{ matrix.project }}
-        run: yarn nx run ${{ matrix.project }}:test
+        run: yarn nx run ${{ matrix.project }}:test --coverage --coverageReporters=lcov
       
       - name: Build ${{ matrix.project }}
         run: yarn nx run ${{ matrix.project }}:build
 
-      
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-reports
+          path: coverage/
+
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Download coverage reports
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage-reports
+          path: coverage/
+
+      - name: Merge coverage reports
+        run: node coverageMerger.js
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
