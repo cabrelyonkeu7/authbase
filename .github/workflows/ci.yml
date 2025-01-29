@@ -61,8 +61,8 @@ jobs:
         with:
           node-version: '20'
   
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
       - name: Lint ${{ matrix.project }}
         run: npx nx run ${{ matrix.project }}:lint
