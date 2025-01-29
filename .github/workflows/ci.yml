@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Increase memory limit
         run: export NODE_OPTIONS=--max_old_space_size=4096
@@ -27,11 +28,11 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Upload node_modules
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-modules
-          path: node_modules/
+      # - name: Upload node_modules
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: node-modules
+      #     path: node_modules/
 
   build-and-test:
     runs-on: ubuntu-latest
@@ -47,11 +48,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
         with:
-          name: node-modules
-          path: node_modules/
+          node-version: '20'
+          cache: 'npm'
 
       - name: Lint ${{ matrix.project }}
         run: npx nx run ${{ matrix.project }}:lint
@@ -82,12 +83,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
-        with:
-          name: node-modules
-          path: node_modules/
+      # - name: Download node_modules
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: node-modules
+      #     path: node_modules/
 
       - name: Download coverage reports
         uses: actions/download-artifact@v4
