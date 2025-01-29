@@ -25,7 +25,7 @@ jobs:
         run: export NODE_OPTIONS=--max_old_space_size=4096
 
       - name: Install dependencies
-        run: yarn install --network-concurrency 1
+        run: npm install --legacy-peer-deps
 
       - name: Upload node_modules
         uses: actions/upload-artifact@v4
@@ -54,13 +54,13 @@ jobs:
           path: node_modules/
 
       - name: Lint ${{ matrix.project }}
-        run: yarn nx run ${{ matrix.project }}:lint
+        run: npx nx run ${{ matrix.project }}:lint
       
       - name: Test ${{ matrix.project }}
-        run: yarn nx run ${{ matrix.project }}:test --coverage --coverageReporters=lcov
+        run: npx nx run ${{ matrix.project }}:test --coverage --coverageReporters=lcov
       
       - name: Build ${{ matrix.project }}
-        run: yarn nx run ${{ matrix.project }}:build
+        run: npx nx run ${{ matrix.project }}:build
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v4
@@ -82,6 +82,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '20'
+
+      - name: Download node_modules
+        uses: actions/download-artifact@v4
+        with:
+          name: node-modules
+          path: node_modules/
 
       - name: Download coverage reports
         uses: actions/download-artifact@v4
