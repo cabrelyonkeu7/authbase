@@ -1,5 +1,7 @@
 # Authbase
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=cabrelyonkeu7_authbase&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=cabrelyonkeu7_authbase) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=cabrelyonkeu7_authbase&metric=bugs)](https://sonarcloud.io/summary/new_code?id=cabrelyonkeu7_authbase) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=cabrelyonkeu7_authbase&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=cabrelyonkeu7_authbase) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=cabrelyonkeu7_authbase&metric=coverage)](https://sonarcloud.io/summary/new_code?id=cabrelyonkeu7_authbase) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=cabrelyonkeu7_authbase&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=cabrelyonkeu7_authbase)
+
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
