@@ -33,11 +33,51 @@ export class AuthBaseClient {
       this.oauthProviders = config.oauthProviders || [];
     }
 
-    getToken() {
+    getApiLoginUrl(): string {
+      return this.apiLoginUrl;
+    }
+
+    getApiRegisterUrl(): string {
+      return this.apiRegisterUrl;
+    }
+
+    getEnable2FA(): boolean {
+      return this.enable2FA;
+    }
+
+    getEnableBiometrics(): boolean {
+      return this.enableBiometrics;
+    }
+
+    getOauthProviders(): OAuthProviderConfig[] {
+      return this.oauthProviders;
+    }
+
+    getToken(): string | null {
       return this.token;
     }
 
-    setToken(token: string) {
+    setApiLoginUrl(url: string): void {
+      this.apiLoginUrl = url;
+    }
+
+    setApiRegisterUrl(url: string): void {
+      this.apiRegisterUrl = url;
+    }
+
+    setEnable2FA(enable: boolean): void {
+      this.enable2FA = enable;
+    }
+
+    setEnableBiometrics(enable: boolean): void {
+      this.enableBiometrics = enable;
+    }
+
+    setOauthProviders(providers: OAuthProviderConfig[]): void {
+      this.oauthProviders = providers;
+    }
+
+    setToken(token: string): void {
       this.token = token;
     }
 }
