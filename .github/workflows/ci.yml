@@ -102,6 +102,12 @@ jobs:
           name: coverage-reports-ui-react
           path: coverage/libs/ui-react
 
+      - name: Download node_modules
+        uses: actions/download-artifact@v4
+        with:
+          name: node-modules
+          path: node_modules/
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
