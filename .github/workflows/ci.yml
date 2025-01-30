@@ -22,17 +22,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
-      - name: Clean Yarn cache
-        run: yarn cache clean
-
-      - name: Increase memory limit
-        run: export NODE_OPTIONS=--max_old_space_size=4096
 
       - name: Install dependencies
-        run: |
-          rm -rf node_modules package-lock.json yarn.lock
-          yarn install
+        run: yarn install
 
       - name: Upload node_modules
         uses: actions/upload-artifact@v4
@@ -66,14 +58,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-    
-      - name: Clean Yarn cache
-        run: yarn cache clean
+
+      - name: Increase memory limit
+        run: export NODE_OPTIONS=--max_old_space_size=4096
   
       - name: Install dependencies
-        run: |
-          rm -rf node_modules package-lock.json yarn.lock 
-          yarn install
+        run: yarn install
 
       - name: Lint ${{ matrix.project }}
         run: npx nx run ${{ matrix.project }}:lint
@@ -117,14 +107,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clean Yarn cache
-        run: yarn cache clean
-
-      - name: Install dependencies
-        run: |
-          rm -rf node_modules package-lock.json yarn.lock
-          yarn install
-
       - name: Merge coverage reports
         run: node coverageMerger.js
 
@@ -143,11 +125,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
 
       - name: Download coverage reports
         uses: actions/download-artifact@v4
