@@ -1,0 +1,60 @@
+{
+  "name": "@authbase/native",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.esm.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.esm.d.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "nx": {
+    "name": "ui-native",
+    "sourceRoot": "libs/ui-native/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+      "build": {
+        "executor": "@nx/rollup:rollup",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "options": {
+          "outputPath": "libs/ui-native/dist",
+          "tsConfig": "libs/ui-native/tsconfig.lib.json",
+          "project": "libs/ui-native/package.json",
+          "entryFile": "libs/ui-native/src/index.ts",
+          "external": [
+            "react/jsx-runtime",
+            "react-native",
+            "react",
+            "react-dom"
+          ],
+          "rollupConfig": "@nx/react/plugins/bundle-rollup",
+          "assets": [
+            {
+              "glob": "libs/ui-native/README.md",
+              "input": ".",
+              "output": "."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "peerDependencies": {
+    "react": "~18.3.1",
+    "react-native": "~0.76.3",
+    "@nx/rollup": "20.3.3",
+    "@testing-library/react-native": "~12.9.0",
+    "@testing-library/jest-native": "~5.4.3",
+    "@storybook/react-webpack5": "8.5.2",
+    "@storybook/react": "8.5.2",
+    "@storybook/testing-library": "^0.2.2",
+    "@storybook/jest": "^0.2.3"
+  }
+}

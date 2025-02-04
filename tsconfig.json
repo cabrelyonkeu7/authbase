@@ -8,6 +8,9 @@
     },
     {
       "path": "./libs/core"
+    },
+    {
+      "path": "./libs/ui-native"
     }
   ],
   "ts-node": {

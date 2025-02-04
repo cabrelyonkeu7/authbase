@@ -43,6 +43,7 @@ jobs:
         project:
           - core
           - ui-react
+          - ui-native
 
     steps:
       - name: Checkout repository
