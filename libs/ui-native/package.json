@@ -51,10 +51,6 @@
     "react-native": "~0.76.3",
     "@nx/rollup": "20.3.3",
     "@testing-library/react-native": "~12.9.0",
-    "@testing-library/jest-native": "~5.4.3",
-    "@storybook/react-webpack5": "8.5.2",
-    "@storybook/react": "8.5.2",
-    "@storybook/testing-library": "^0.2.2",
-    "@storybook/jest": "^0.2.3"
+    "@testing-library/jest-native": "~5.4.3"
   }
 }
