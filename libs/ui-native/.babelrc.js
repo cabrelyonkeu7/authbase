@@ -15,14 +15,7 @@ module.exports = function (api) {
     env: {
       test: {
         presets: [
-          'module:metro-react-native-babel-preset',
-          '@babel/preset-env',
-          '@babel/preset-react',
-          '@babel/preset-typescript',
           ['module:@react-native/babel-preset', { useTransformReactJSX: true }],
-        ],
-        plugins: [
-          '@babel/plugin-transform-flow-strip-types'
         ],
       },
     },
